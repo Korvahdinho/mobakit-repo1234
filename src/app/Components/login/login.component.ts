@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   CustomerLogin(regForm: any) {
     const data = JSON.stringify(this.model)
     console.log(data);
-    this.http.post('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/processLogin', data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+    this.http.post('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/processLogin', data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
 
       this.result = res
       if (this.result.success) {

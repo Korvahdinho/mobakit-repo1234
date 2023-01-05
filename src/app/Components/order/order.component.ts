@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit {
     console.log(this.loggeduser)
     this.customer_id = this.loggeduser[0].CUSTOMER_ID
     console.log(this.customer_id)
-    this.http.post('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getAdminOrders', JSON.stringify({ 'id': this.customer_id }), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+    this.http.post('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getAdminOrders', JSON.stringify({ 'id': this.customer_id }), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
       console.log("res", res)
       this.stored = res
       console.log(this.stored)

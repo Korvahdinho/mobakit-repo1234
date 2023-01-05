@@ -1,7 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import * as $ from 'jquery';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    this.http.get('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getLimitData/8').subscribe((res) => {
+    this.http.get('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getLimitData/8').subscribe((res) => {
       //console.log(res);
       this.models = res;
       console.log(this.models)

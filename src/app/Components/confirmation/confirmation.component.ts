@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-confirmation',
   templateUrl: './confirmation.component.html',
@@ -36,7 +36,7 @@ export class ConfirmationComponent implements OnInit {
     console.log("Logged User", this.loggeduser)
     console.log("Customer ID", customer_id)
     console.log("stored", this.stored)
-    this.http.post('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getOrderData', JSON.stringify({ customer: customer_id, puchase_time: time }), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+    this.http.post('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getOrderData', JSON.stringify({ customer: customer_id, puchase_time: time }), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
       this.model = res
       console.log("getOrderData Response", (this.model.data))
       this.newDate = new Date(this.model.data[0].PURCHASE_DATE)

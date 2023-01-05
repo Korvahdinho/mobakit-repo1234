@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class AdminOrderDashComponent implements OnInit {
   Delete(id) {
     console.log(id)
 
-    this.http.get('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/deleteProduct/' + id).subscribe((res) => {
+    this.http.get('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/deleteProduct/' + id).subscribe((res) => {
       this.response = res
       if (this.response.success == true) {
         this.ngOnInit()
@@ -27,7 +27,7 @@ export class AdminOrderDashComponent implements OnInit {
   }
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    this.http.get('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getAllProduct').subscribe((res) => {
+    this.http.get('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getAllProduct').subscribe((res) => {
 
       this.models = res
       console.log(this.models)

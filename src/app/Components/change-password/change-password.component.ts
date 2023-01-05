@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -22,7 +22,7 @@ export class ChangePasswordComponent implements OnInit {
     }
     else {
       console.log(JSON.stringify(this.model))
-      this.http.post('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/changePassword', JSON.stringify(this.model), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+      this.http.post('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/changePassword', JSON.stringify(this.model), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
         this.result = res
         if (this.result.success == true) this.router.navigate(['/login'])
         else this.passwordalert = "Invalid Password ! Old Password is Incorrect"

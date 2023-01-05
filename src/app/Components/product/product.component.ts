@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HeaderComponent } from '../header/header.component'
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -33,11 +32,11 @@ export class ProductComponent implements OnInit {
     window.scrollTo(0, 0);
     this.product_id = this.route.snapshot.params['id'];
     console.log("Product Id", this.product_id);
-    this.http.get('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getProduct/' + this.product_id).subscribe((res) => {
+    this.http.get('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getProduct/' + this.product_id).subscribe((res) => {
       this.models = res;
       //console.log(this.models);
     })
-    this.http.get("http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getLimitData/12").subscribe((res) => {
+    this.http.get("http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getLimitData/12").subscribe((res) => {
       this.tops = res;
       //console.log("Tops:",this.tops);
     })
@@ -52,7 +51,7 @@ export class ProductComponent implements OnInit {
   }
   getReview() {
     console.log("get review function Chala")
-    this.http.get("http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/getReview/" + this.product_id).subscribe((res) => {
+    this.http.get("http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/getReview/" + this.product_id).subscribe((res) => {
       this.reviews = res
       this.NoReview = this.reviews.length
       console.log("getReview", this.reviews)
@@ -69,7 +68,7 @@ export class ProductComponent implements OnInit {
       this.ratings["Name"] = this.loggeduser[0].NAME
       this.ratings["Product_Id"] = this.product_id
       console.log(JSON.stringify(this.ratings))
-      this.http.post('http://mobikart-alb-2069803266.us-east-1.elb.amazonaws.com/setReview', JSON.stringify(this.ratings), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
+      this.http.post('http://mobikart-alb-1848800874.us-east-1.elb.amazonaws.com/setReview', JSON.stringify(this.ratings), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).subscribe((res) => {
         this.result = res
         console.log("Result from set Review", res)
         if (this.result.success == true) {
